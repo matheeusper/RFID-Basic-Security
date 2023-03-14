@@ -10,11 +10,12 @@
             "includePath": [
                 "c:/Users/Administrator/Documents/PlatformIO/Projects/RFID Basic Security/include",
                 "c:/Users/Administrator/Documents/PlatformIO/Projects/RFID Basic Security/src",
+                "c:/Users/Administrator/Documents/PlatformIO/Projects/RFID Basic Security/.pio/libdeps/uno/MFRC522/src",
+                "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/variants/standard",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 ""
@@ -24,11 +25,12 @@
                 "path": [
                     "c:/Users/Administrator/Documents/PlatformIO/Projects/RFID Basic Security/include",
                     "c:/Users/Administrator/Documents/PlatformIO/Projects/RFID Basic Security/src",
+                    "c:/Users/Administrator/Documents/PlatformIO/Projects/RFID Basic Security/.pio/libdeps/uno/MFRC522/src",
+                    "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/variants/standard",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                    "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     ""

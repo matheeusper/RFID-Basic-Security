@@ -5,5 +5,5 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:kkkkkddddd22222
+  // put your main code here, to run repeatedly:kkkk
 }

@@ -1,31 +1,92 @@
 #include <Arduino.h>
+/*
+   Curso de Arduino e AVR WR Kits Channel
+   
+   Aula 88 - RFID - Introdução
+   
+    
+   Autor: Eng. Wagner Rambo  Data: Outubro de 2016
+   
+   www.wrkits.com.br | facebook.com/wrkits | youtube.com/user/canalwrkits
+   
+*/
+
+// --- Bibliotecas Auxiliares ---
 #include <SPI.h>
 #include <MFRC522.h>
 
-#define RST_PIN 9
+
+// --- Mapeamento de Hardware ---
 #define SS_PIN 10
+#define RST_PIN 9
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // Cria instância com MFRC522
+ 
 
-MFRC522 mfrc522(SS_PIN, RST_PIN);
+// --- Variáveis Globais --- 
+char st[20];
 
-void setup() {
-  Serial.begin(9600);
-  while (!Serial);
-  SPI.begin();
-  mfrc522.PCD_Init();
-  Serial.println("Aguardando leitura do cartão RFID...");
-}
 
-void loop() {
-  if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial()) {
-    String variavel = "";
-    for (byte i = 0; i < mfrc522.uid.size; i++) {
-      variavel.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? "0" : ""));
-      variavel.concat(String(mfrc522.uid.uidByte[i], HEX));
-    }
-    Serial.println("Variável lida: " + variavel);
-    String novaVariavel = "exemplo123"; // Gera automaticamente uma nova variável
-    Serial.print("Nova variável: ");
-    Serial.println(novaVariavel);
-    variavel = novaVariavel;
+// --- Configurações Iniciais ---
+void setup() 
+{
+  Serial.begin(9600);   // Inicia comunicação Serial em 9600 baud rate
+  SPI.begin();          // Inicia comunicação SPI bus
+  mfrc522.PCD_Init();   // Inicia MFRC522
+  
+  Serial.println("Aproxime o seu cartao do leitor...");
+  Serial.println();
+   
+  
+} //end setup
+
+
+// --- Loop Infinito ---
+void loop() 
+{
+  // Verifica novos cartões
+  if ( ! mfrc522.PICC_IsNewCardPresent()) 
+  {
+    return;
   }
-}
+  // Seleciona um dos cartões
+  if ( ! mfrc522.PICC_ReadCardSerial()) 
+  {
+    return;
+  }
+  
+  // Mostra UID na serial
+  Serial.print("UID da tag :");
+  String conteudo= "";
+  byte letra;
+  for (byte i = 0; i < mfrc522.uid.size; i++) 
+  {
+     Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
+     Serial.print(mfrc522.uid.uidByte[i], HEX);
+     conteudo.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
+     conteudo.concat(String(mfrc522.uid.uidByte[i], HEX));
+  }
+  Serial.println();
+  Serial.print("Mensagem : ");
+  conteudo.toUpperCase();
+  
+  if (conteudo.substring(1) == "86 D0 17 7E") //UID 1 - Chaveiro
+  {
+    Serial.println("Chaveiro identificado!");
+    Serial.println();
+    delay(3000);
+     
+  }
+ 
+  if (conteudo.substring(1) == "54 DB 03 C5") //UID 2 - Cartao
+  {
+    Serial.println("Cartao identificado");
+    Serial.println();
+    delay(3000);
+    
+  }
+  
+  
+} //end loop
+ 
+ 
+
